@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التواصل</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            color: #fff;
+            background: url(imgs/bg.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #ffcc00, #fff27e, #ffcc00);
+            background-size: 200% 100%;
+            z-index: 1000;
+        }
+
+        header {
+            position: fixed;
+            top: 30px;
+            width: 90%;
+            margin: auto;
+            background: rgba(13, 13, 13, 0.6);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            z-index: 998;
+            border-radius: 20px;
+            display: flex;
+            justify-content:space-between;
+            align-items:center;
+            transition: all 0.5s ease;
+            padding: 10px 20px;
+        }
+
+        header:hover {
+            box-shadow: 0 0 10px #ffcc0080;
+        }
+
+        header a {
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        header i {
+            color: #fff;
+            font-size: 1.8rem;
+            transition: 0.3s;
+            text-shadow: 0 0 10px #ffcc00a0;
+            padding: 20px;
+        }
+
+        header i:hover {
+            color: #ffcc00;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            margin: 0;
+            padding: 0;
+            padding-right: 30px;
+            line-height: 1.3;
+        }
+        .logo {
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.1);
+        }
+
+        .logo img {
+            width: 105px; 
+            height: auto;
+            border-radius: 10px;
+        }
+
+        main{
+            width: 100%;
+            height: 100%;
+        }
+
+        .social {
+            width: 95%;
+            border-radius: 20px;
+            display: flex;
+            justify-content: space-around; 
+            align-items: center;
+            margin: 250px auto;
+            background: rgba(191, 191, 191, 0.091);
+            padding: 30px;
+            gap: 30px;
+        }
+
+        .card {
+            width: 30%;
+            height: 400px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: column;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 1.5rem;
+            color: #fff;
+            padding: 30px;
+            padding-bottom: 150px;
+        }
+
+        .youtube {
+            background: radial-gradient(circle at 30% 30%, 
+                                        #ff9a9e 0%, 
+                                        #ff4e50 50%, 
+                                        #ff0000 100%);
+        }
+
+        .instagram {
+            background: radial-gradient(circle at 30% 107%, 
+                                        #fdf497 0%, 
+                                        #fd5949 45%, 
+                                        #d6249f 60%, 
+                                        #285AEB 90%);
+        }
+
+        .x {
+            background: radial-gradient(circle at 50% 50%, 
+                                        #7cb8dd 0%, 
+                                        #5ea1ca 50%, 
+                                        #1c87d9 100%);
+        }
+
+        .tiktok {
+            background: linear-gradient(to top right, #000000, #343434); 
+        }
+
+        .line{
+            width: 2px;
+            background-color: #ffcc00;
+            height: 400px;
+        }
+
+
+        .card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+        }
+
+        .social i{
+            color: white;
+            scale: 1.9;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="top-bar"></div>
+
+    <header>
+        <a href="index.html">
+            <i class="fas fa-home"></i>
+        </a>
+        <div class="logo" style="cursor: pointer;">
+            <a href="index.html"><img src="logo.png" alt="أصالـة" class="logo-image"></a>
+        </div>
+    </header>
+
+    <main>
+        <div class="social">
+            <h2>وسائل التواصل الاجتماعي</h2>
+            <div class="line"></div>
+            <div onclick="window.open('https://youtube.com/@asalahsa?si=R-DdL1mMWBuYf04t', '_blank')" class="youtube card">
+                <h3>Youtube</h3>
+                <i class="fa-brands fa-youtube"></i>
+            </div>
+            
+            <div onclick="window.open('https://www.instagram.com/asalah_ksa', '_blank')" class="instagram card">
+                <h3>Instagram</h3>
+                <i class="fa-brands fa-instagram"></i>
+            </div>
+            
+            <div onclick="window.open('', '_blank')" class="x card">
+                <h3>X</h3>
+                <i class="fa-brands fa-square-x-twitter"></i>
+            </div>
+            
+            <div onclick="window.open('https://www.tiktok.com/@asalah_sa?_t=ZS-90xeYDJH0xs&_r=1', '_blank')" class="tiktok card">
+                <h3>Tiktok</h3>
+                <i class="fa-brands fa-tiktok"></i>
+            </div>
+            
+            
+            
+        </div>
+    </main>
+</body>
+</html>

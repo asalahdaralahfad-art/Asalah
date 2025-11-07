@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أصالـة - Asalah</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Top Golden Bar -->
+    <div class="top-bar">
+
+    </div>
+    <!-- Navigation Header -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="nav-icons">
+                <i class="fas fa-user" onclick="openAuthModal()" style="cursor: pointer;"></i>
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            
+            <nav class="nav-menu">
+                <a href="#" class="nav-link active">الرئيسية</a>
+                <a href="#" class="nav-link" onclick="openPoetryLibrary(); return false;">مكتبة إرث</a>
+                <a href="#" class="nav-link" onclick="openHeritagePage(); return false;">تراثــنا</a>
+                <a href="#" class="nav-link" onclick="openHeroesPage(); return false;">شـهداء الوطن</a>
+                <a href="#" class="nav-link" onclick="openAncestorsStoriesPage(); return false;">قصص اجدادنا</a>
+                <a href="#" class="nav-link" onclick="openAnthemsPage(); return false;">العادات والتقاليد</a>
+                <a href="#" class="nav-link" onclick="openEntertainmentPage(); return false;">الترفيه التراثي</a>
+                <a href="#" class="nav-link" onclick="openContactPage(); return false;">التواصل</a>
+            </nav>
+            
+            <div class="logo" onclick="goToHome()" style="cursor: pointer;">
+                <img src="logo.png" alt="أصالـة" class="logo-image">
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <button class="mobile-menu-close" onclick="toggleMobileMenu()">
+                <i class="fas fa-times"></i>
+            </button>
+            <a href="#" class="mobile-nav-link active" onclick="toggleMobileMenu()">الرئيسية</a>
+            <a href="#" class="mobile-nav-link" onclick="openPoetryLibrary(); toggleMobileMenu(); return false;">مكتبة إرث</a>
+            <a href="#" class="mobile-nav-link" onclick="openHeritagePage(); toggleMobileMenu(); return false;">تعرف على التراث</a>
+            <a href="#" class="mobile-nav-link" onclick="openHeroesPage(); toggleMobileMenu(); return false;">شـهداء الوطن</a>
+            <a href="#" class="mobile-nav-link" onclick="openAncestorsStoriesPage(); toggleMobileMenu(); return false;">قصص اجدادنا</a>
+            <a href="#" class="mobile-nav-link" onclick="openAnthemsPage(); toggleMobileMenu(); return false;">تقاليدنا</a>
+            <a href="#" class="mobile-nav-link" onclick="openEntertainmentPage(); toggleMobileMenu(); return false;">الترفيه التراثي</a>
+            <a href="#" class="mobile-nav-link" onclick="openContactPage(); toggleMobileMenu(); return false;">التواصل</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="read-more">
+            <i onclick="closeF()" class="fa-solid fa-circle-xmark"></i>
+            <video controls src="" frameborder="0"></video>
+            <p></p>
+        </div>
+        <!-- Left Hero Section -->
+        <div class="hero-section">
+            <div class="hero-content">
+                <div class="hero-line"></div>
+                <div class="hero-location">اكتشف السعوديه</div>
+                <h1 class="hero-title">
+                    <span class="title-line">اصالة</span>
+                </h1>
+                <p class="hero-description">
+                    منصة تسلط الضوء على التراث السعودي العريق، تستعرض المواقع التاريخية والمعالم الثقافية التي تروي قصة المملكة عبر العصور.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn-circle">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </button>
+                    <button onclick="read_more()" class="btn-outline">اكتشف المزيد</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Cards Section -->
+        <div class="cards-section">
+            <div class="cards-container">
+                <div class="card" data-index="0">
+                    <div class="card-image">
+                        <img src="imgs/jedah.webp" alt="AlUla">
+                    </div>
+                    <div class="card-overlay">
+                        <div class="card-location">جدة - السعودية</div>
+                        <div class="card-title">جدة التاريخية</div>
+                    </div>
+                </div>
+                
+                <div class="card" data-index="1">
+                    <div class="card-image">
+                        <img src="imgs/daria.jpg" alt="AlUla">
+                    </div>
+                    <div class="card-overlay">
+                        <div class="card-location">الدرعية - السعودية</div>
+                        <div class="card-title">الدرعية<br>التاريخية</div>
+                    </div>
+                </div>
+
+                <div class="card" data-index="2">
+                    <div class="card-image">
+                        <img src="imgs/saleh.webp" alt="AlUla">
+                    </div>
+                    <div class="card-overlay">
+                        <div class="card-location">العلا - السعودية</div>
+                        <div class="card-title">مدائن صالح<br>العريقة</div>
+                    </div>
+                </div>
+
+                <div class="card" data-index="3">
+                    <div class="card-image">
+                        <img src="imgs/regal.jpeg" alt="AlUla">
+                    </div>
+                    <div class="card-overlay">
+                        <div class="card-location">عسير - السعودية</div>
+                        <div class="card-title">قرية رجال <br>المع</div>
+                    </div>
+                </div>
+                
+                <div class="card" data-index="4">
+                    <div class="card-image">
+                        <img src="imgs/msmk.jpg" alt="AlUla">
+                    </div>
+                    <div class="card-overlay">
+                        <div class="card-location">الرياض - السعودية</div>
+                        <div class="card-title">قصر المصمك<br>التاريخي</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Poetry Library Loading Screen -->
+    <div class="heritage-loading" id="poetryLibraryLoading">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <div class="loading-spinner">
+                    <div class="spinner-ring"></div>
+                    <div class="spinner-ring"></div>
+                    <div class="spinner-ring"></div>
+                </div>
+            </div>
+            <div class="loading-text">جاري التحميل...</div>
+            <div class="loading-bar">
+                <div class="loading-bar-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Poetry Library Page -->
+    <div class="poetry-library-page" id="poetryLibraryPage">
+        <button class="heritage-close" onclick="closePoetryLibrary()">
+            <i class="fas fa-times"></i>
+        </button>
+        
+        <div class="poetry-library-content">
+            <div class="poetry-header">
+                <h2 class="section-title">مكتبة إرث</h2>
+                <p class="section-subtitle">استكشف دواوين الشعراء السعوديين</p>
+            </div>
+            
+            <div class="poets-grid" id="poetsGrid">
+                <!-- Poetry cards will be generated by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Poetry Books Modal -->
+    <div class="modal-overlay" id="poetryBooksModal">
+        <div class="modal-container">
+            <button class="modal-close" onclick="closePoetryBooks()">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="poetry-books-content">
+                <div class="books-header" id="booksHeader"></div>
+                <div class="books-grid" id="booksGrid">
+                    <!-- Poetry books will be generated by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Heritage Loading Screen -->
+    <div class="heritage-loading" id="heritageLoading">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <div class="loading-spinner">
+                    <div class="spinner-ring"></div>
+                    <div class="spinner-ring"></div>
+                    <div class="spinner-ring"></div>
+                </div>
+            </div>
+            <div class="loading-text">جاري التحميل...</div>
+            <div class="loading-bar">
+                <div class="loading-bar-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Heritage Page -->
+    <div class="heritage-page" id="heritagePage">
+        <button class="heritage-close" onclick="closeHeritagePage()">
+            <i class="fas fa-times"></i>
+        </button>
+        
+        <!-- Parallax Hero Section -->
+        <div class="heritage-hero" data-parallax="0.5">
+            <!-- Space Background with Stars -->
+            <div class="space-background">
+                <div class="stars"></div>
+                <div class="stars2"></div>
+                <div class="stars3"></div>
+            </div>
+            
+            <!-- Nabataean Stone Carving Background -->
+            <div class="nabataean-stone-background"></div>
+            
+            <!-- Earth Planet with Saudi Arabia Map -->
+            <div class="earth-planet-container">
+                <div class="earth-planet" id="earthPlanet">
+                    <div class="earth-surface">
+                        <div class="saudi-arabia-map">
+                            <!-- Saudi Arabia outline -->
+                            <svg viewBox="0 0 500 500" class="saudi-map-svg" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M 250 100 
+                                         L 320 110 
+                                         L 380 125 
+                                         L 400 140 
+                                         L 410 160 
+                                         L 420 180 
+                                         L 425 200 
+                                         L 420 220 
+                                         L 410 240 
+                                         L 395 260 
+                                         L 375 275 
+                                         L 350 285 
+                                         L 320 290 
+                                         L 290 292 
+                                         L 260 290 
+                                         L 230 285 
+                                         L 200 275 
+                                         L 175 260 
+                                         L 155 240 
+                                         L 140 220 
+                                         L 130 200 
+                                         L 125 180 
+                                         L 130 160 
+                                         L 140 140 
+                                         L 155 125 
+                                         L 175 115 
+                                         L 200 108 
+                                         L 225 102 
+                                         Z" 
+                                      fill="rgba(255, 215, 0, 0.4)" 
+                                      stroke="#ffd700" 
+                                      stroke-width="3"
+                                      stroke-linejoin="round"
+                                      stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Text Overlay -->
+            <div class="heritage-hero-content">
+                <p class="heritage-hero-small-text">تعرف على التراث السعودي</p>
+                <h1 class="heritage-main-title-large">تراثنا</h1>
+                <button class="heritage-explore-btn-on-planet" onclick="openHeritageOptions()">
+                    <span>استكشف التراث</span>
+                    <i class="fas fa-compass"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Heritage Options Modal Window -->
+        <div class="heritage-options-modal" id="heritageOptionsModal">
+            <div class="heritage-options-content">
+                <button class="heritage-options-close" onclick="closeHeritageOptions()">
+                    <i class="fas fa-times"></i>
+                </button>
+                <h2 class="heritage-options-title">استكشف التراث السعودي</h2>
+                <div class="heritage-options-grid">
+                    <div class="heritage-option-card" onclick="openHeritageInternalPage(0)">
+                        <div class="heritage-option-image">
+                            <img src="imgs/Traditional Saudi Fashion Foundation Day يوم التأسيس traditional costumes.jpeg" alt="الأزياء التقليدية">
+                        </div>
+                        <button class="heritage-option-btn">الأزياء التقليدية</button>
+                    </div>
+                    <div class="heritage-option-card" onclick="openHeritageInternalPage(1)">
+                        <div class="heritage-option-image">
+                            <img src="imgs/برقع ذهبي.jpeg" alt="المجوهرات والإكسسوارات">
+                        </div>
+                        <button class="heritage-option-btn">المجوهرات والإكسسوارات</button>
+                    </div>
+                    <div class="heritage-option-card" onclick="openHeritageInternalPage(2)">
+                        <div class="heritage-option-image">
+                            <img src="imgs/الجاروشة.jpeg" alt="الأدوات التقليدية">
+                        </div>
+                        <button class="heritage-option-btn">الأدوات التقليدية</button>
+                    </div>
+                    <div class="heritage-option-card" onclick="openHeritageInternalPage(3)">
+                        <div class="heritage-option-image">
+                            <img src="imgs/Arabic Coffee _ How to Make Traditional Arabic Gahwa.jpeg" alt="المشروبات التراثية">
+                        </div>
+                        <button class="heritage-option-btn">المشروبات التراثية</button>
+                    </div>
+                    <div class="heritage-option-card" onclick="openHeritageInternalPage(4)">
+                        <div class="heritage-option-image">
+                            <img src="imgs/download (4).jpeg" alt="الأطعمة التقليدية">
+                        </div>
+                        <button class="heritage-option-btn">الأطعمة التقليدية</button>
+                    </div>
+                    <div class="heritage-option-card" onclick="openHeritageInternalPage(5)">
+                        <div class="heritage-option-image">
+                            <img src="imgs/download (5).jpeg" alt="الأسلحة التقليدية">
+                        </div>
+                        <button class="heritage-option-btn">الأسلحة التقليدية</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Heritage Internal Pages -->
+        <div class="heritage-internal-page" id="heritageInternalPage">
+            <button class="heritage-internal-close" onclick="closeHeritageInternalPage()">
+                <i class="fas fa-times"></i>
+                <span>إغلاق</span>
+            </button>
+            <div class="heritage-internal-content" id="heritageInternalContent">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Heroes Loading Screen -->
+    <div class="heritage-loading" id="heroesLoading">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <div class="loading-spinner">
+                    <div class="spinner-ring"></div>
+                    <div class="spinner-ring"></div>
+                    <div class="spinner-ring"></div>
+                </div>
+            </div>
+            <div class="loading-text">جاري التحميل...</div>
+            <div class="loading-bar">
+                <div class="loading-bar-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Heroes of Nation Page -->
+    <div class="heroes-page" id="heroesPage">
+        <button class="heritage-close" onclick="closeHeroesPage()">
+            <i class="fas fa-times"></i>
+        </button>
+        
+        <div class="heroes-header">
+            <div class="heroes-title-section">
+                <h1 class="heroes-main-title">شهداء الوطن</h1>
+                <p class="heroes-subtitle">شهداؤنا الأبرار الذين قدموا حياتهم دفاعاً عن الوطن</p>
+            </div>
+        </div>
+
+        <div class="heroes-content">
+            <div class="heroes-videos-section">
+                <h2 class="videos-section-title">فيديوهات تذكارية</h2>
+                <div class="videos-grid">
+                    <div class="video-wrapper">
+                        <iframe 
+                            src="https://www.youtube.com/embed/hP9mc4G5XJQ" 
+                            title="عيالي فداها"
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="video-wrapper">
+                        <iframe 
+                            src="https://www.youtube.com/embed/nDWqQNzlIoo" 
+                            title="دماء الشهداء"
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="video-wrapper">
+                        <iframe 
+                            src="https://www.youtube.com/embed/vyqFIAfkenk" 
+                            title="مهمة العوجا"
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="heroes-tribute">
+                <div class="tribute-content">
+                    <h2 class="tribute-title">شهداء الوطن</h2>
+                    <p class="tribute-text">
+                        شهداء المملكة العربية السعودية هم الأبطال الذين قدموا أسمى ما يمكن أن يقدمه إنسان دفاعاً عن الوطن والعقيدة. 
+                        إنهم النجوم الساطعة في سماء وطننا، الذين اختاروا أن يكتبوا تاريخهم بدمائهم الزكية، فيقتلون ويقتلون حتى تستقر 
+                        أرض الحرمين الشريفين ويبقى الوطن آمناً مطمئناً في ظل قيادة خادم الحرمين الشريفين الملك سلمان بن عبد العزيز 
+                        وولي عهده الأمين الأمير محمد بن سلمان حفظهما الله.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ancestors Stories Loading Screen -->
+    <div class="heritage-loading" id="ancestorsStoriesLoading">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <div class="loading-spinner">
+                    <div class="spinner-ring"></div>
+                    <div class="spinner-ring"></div>
+                    <div class="spinner-ring"></div>
+                </div>
+            </div>
+            <div class="loading-text">جاري التحميل...</div>
+            <div class="loading-bar">
+                <div class="loading-bar-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ancestors Stories Page -->
+    <div class="ancestors-stories-page" id="ancestorsStoriesPage">
+        <button class="heritage-close" onclick="closeAncestorsStoriesPage()">
+            <i class="fas fa-times"></i>
+        </button>
+        
+        <div class="ancestors-stories-header">
+            <div class="ancestors-stories-title-section">
+                <h1 class="ancestors-stories-main-title">قصص أجدادنا</h1>
+                <p class="ancestors-stories-subtitle">تراث من الماضي يضيء الحاضر</p>
+            </div>
+        </div>
+
+        <div class="ancestors-stories-content">
+            <div class="ancestors-stories-grid">
+                <div class="ancestor-story-card" onclick="openStorySection(0)">
+                    <div class="story-card-icon">📖</div>
+                    <h3 class="story-card-title">قصص من الماضي</h3>
+                    <p class="story-card-description">قصص حقيقية من حياة الأجداد</p>
+                </div>
+
+                <div class="ancestor-story-card" onclick="openStorySection(1)">
+                    <div class="story-card-icon">🏛️</div>
+                    <h3 class="story-card-title">أبطال من أرض الوطن</h3>
+                    <p class="story-card-description">فرسان وقادة ساهموا في بناء الوطن</p>
+                </div>
+
+                <div class="ancestor-story-card" onclick="openStorySection(2)">
+                    <div class="story-card-icon grandfather-icon">
+                        <div class="grandfather-head">
+                            <div class="grandfather-face">
+                                <div class="grandfather-eyebrows"></div>
+                                <div class="grandfather-eyes">
+                                    <div class="eye left"></div>
+                                    <div class="eye right"></div>
+                                </div>
+                                <div class="grandfather-wrinkles"></div>
+                                <div class="grandfather-nose"></div>
+                                <div class="grandfather-mouth"></div>
+                            </div>
+                            <div class="grandfather-shemagh">
+                                <div class="shemagh-red"></div>
+                                <div class="shemagh-white"></div>
+                                <div class="shemagh-igaal"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="story-card-title">شاركنا قصة جدّك</h3>
+                    <p class="story-card-description">كن راوٍ للتراث واحكِ قصة جدك</p>
+                </div>
+
+                <div class="ancestor-story-card" onclick="openStorySection(3)">
+                    <div class="story-card-icon">🧕🏻</div>
+                    <h3 class="story-card-title">أمثال من جدّاتنا</h3>
+                    <p class="story-card-description">أمثال شعبية ومعانيها</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Story Section Content (will be loaded dynamically) -->
+    <div class="story-section-modal" id="storySectionModal">
+        <button class="story-section-close" onclick="closeStorySection()">
+            <i class="fas fa-times"></i>
+            <span>رجوع</span>
+        </button>
+        <div class="story-section-content" id="storySectionContent">
+            <!-- Content will be loaded dynamically -->
+        </div>
+    </div>
+
+    <!-- Anthems Loading Screen -->
+    <div class="heritage-loading" id="anthemsLoading">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <div class="loading-spinner">
+                    <div class="spinner-ring"></div>
+                    <div class="spinner-ring"></div>
+                    <div class="spinner-ring"></div>
+                </div>
+            </div>
+            <div class="loading-text">جاري التحميل...</div>
+            <div class="loading-bar">
+                <div class="loading-bar-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Anthems Page -->
+    <div class="anthems-page" id="anthemsPage">
+        <button class="heritage-close" onclick="closeAnthemsPage()">
+            <i class="fas fa-times"></i>
+        </button>
+        
+        <div class="anthems-header">
+            <div class="anthems-title-section">
+                <h1 class="anthems-main-title">تراث المملكة العريق</h1>
+                <p class="anthems-subtitle"></p>
+            </div>
+        </div>
+
+        <div class="anthems-content">
+            <!-- Heritage Items Section -->
+            <div class="heritage-items-section">
+                <p class="heritage-section-subtitle">اكتشف الأزياء والأدوات التقليدية التي تعبر عن هوية السعودية</p>
+                
+                <div class="heritage-carousel-container">
+                    <div class="heritage-carousel-wrapper">
+                        <div class="heritage-carousel">
+                            <!-- Item 1: Thob -->
+                            <div class="heritage-card">
+                                <div class="heritage-card-image">
+                                    <img src="imgs/download (8).jpeg" alt="الثوب السعودي">
+                                    <div class="heritage-card-overlay"></div>
+                                </div>
+                                <div class="heritage-card-content">
+                                    <h3 class="heritage-card-title">الثوب السعودي</h3>
+                                    <p class="heritage-card-description">
+                                        الثوب السعودي التقليدي يُمثل هوية وطنية عريقة، يُصنع من أقمشة فاخرة ويتميز بألوانه الأنيقة
+                                        وخطوطه الفريدة التي تعكس الأصالة والتراث السعودي الأصيل.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Item 2: Bisht -->
+                            <div class="heritage-card">
+                                <div class="heritage-card-image">
+                                    <img src="imgs/download (9).jpeg" alt="البشت">
+                                    <div class="heritage-card-overlay"></div>
+                                </div>
+                                <div class="heritage-card-content">
+                                    <h3 class="heritage-card-title">البشت</h3>
+                                    <p class="heritage-card-description">
+                                        البشت هو الرداء التقليدي الشهير المصنوع من الصوف أو الكشمير ويزينه الخيوط الذهبية.
+                                        يُعتبر رمزاً للأناقة والفخر، ويرتديه السعوديون في المناسبات الاحتفالية والعيد الوطني.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Item 3: Miswak -->
+                            <div class="heritage-card">
+                                <div class="heritage-card-image">
+                                    <img src="imgs/مسواك مفرغ 3 قطع.jpeg" alt="المسواك">
+                                    <div class="heritage-card-overlay"></div>
+                                </div>
+                                <div class="heritage-card-content">
+                                    <h3 class="heritage-card-title">المسواك</h3>
+                                    <p class="heritage-card-description">
+                                        المسواك هو أداة تقليدية للعناية بالأسنان مصنوعة من جذور شجرة الأراك.
+                                        يُعتبر من التراث الإسلامي والعربي الأصيل، ويُستخدم منذ آلاف السنين للصحة والنظافة.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Item 4: Coffee Pot -->
+                            <div class="heritage-card">
+                                <div class="heritage-card-image">
+                                    <img src="imgs/القهوة العربية Traditional Arabic Coffee.jpeg" alt="دلة القهوة السعودية">
+                                    <div class="heritage-card-overlay"></div>
+                                </div>
+                                <div class="heritage-card-content">
+                                    <h3 class="heritage-card-title">دلة القهوة السعودية</h3>
+                                    <p class="heritage-card-description">
+                                        دلة القهوة السعودية التقليدية مصنوعة من النحاس أو الفضة وتحمل نقوشاً ذهبية فريدة.
+                                        تُعتبر رمزاً للكرم والضيافة السعودية الأصيلة، ويُقدم فيها القهوة السعودية الساخنة للضيوف.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Item 5: Dates Pot -->
+                            <div class="heritage-card">
+                                <div class="heritage-card-image">
+                                    <img src="imgs/WhatsApp Image 2025-11-03 at 22.38.35_a25e7c25.jpg" alt="مبخرة التمر">
+                                    <div class="heritage-card-overlay"></div>
+                                </div>
+                                <div class="heritage-card-content">
+                                    <h3 class="heritage-card-title">مبخرة التمر</h3>
+                                    <p class="heritage-card-description">
+                                        مبخرة التمر أو "السلة" تُستخدم لحفظ وتقديم التمر السعودي الشهير.
+                                        تُصنع من خوص النخيل أو المعدن وتُزين بنقوش تقليدية، وتُعتبر جزءاً من تراث الضيافة السعودية.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Item 6: Traditional Dagger -->
+                            <div class="heritage-card">
+                                <div class="heritage-card-image">
+                                    <img src="imgs/images.jpeg" alt="الخنجر السعودي">
+                                    <div class="heritage-card-overlay"></div>
+                                </div>
+                                <div class="heritage-card-content">
+                                    <h3 class="heritage-card-title">الخنجر السعودي</h3>
+                                    <p class="heritage-card-description">
+                                        الخنجر السعودي هو قطعة فنية تقليدية تُلبس في المناسبات الاحتفالية.
+                                        يتكون من خنجر فضي مزخرف بقبضة عاجية أو خشبية، ويرمز إلى الفروسية والشهامة في التراث السعودي.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Navigation Arrows -->
+                    <button class="heritage-carousel-nav heritage-prev-btn">
+                        <span>السابق</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button class="heritage-carousel-nav heritage-next-btn">
+                        <i class="fas fa-arrow-left"></i>
+                        <span>التالي</span>
+                    </button>
+                </div>
+            </div>
+            
+            <h2 class="videos-section-title">فيديوهات الأهازيج الوطنية</h2>
+            <div class="anthems-videos-section">
+                <div class="videos-grid">
+                    <div class="video-wrapper">
+                        <iframe 
+                            src="https://www.youtube.com/embed/DjKvD8099rU" 
+                            title="غن يا وادي حنيفه"
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="video-wrapper">
+                        <iframe 
+                            src="https://www.youtube.com/embed/IyHhWFIecc8" 
+                            title="دار ياللي سعدها تو ما جاها"
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="video-wrapper">
+                        <iframe 
+                            src="https://www.youtube.com/embed/0uUSqI96Zw4" 
+                            title=" أصالة تراثنا"
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="video-wrapper">
+                        <iframe 
+                            src="https://www.youtube.com/embed/O8ciyr5EoYw" 
+                            title="يا كبر الفخر"
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="anthems-info">
+                <div class="info-content">
+                    <h2 class="info-title">الأهازيج الوطنية</h2>
+                    <p class="info-text">
+                        الأهازيج الوطنية السعودية تعبر عن حب الوطن والوفاء للقيادة الرشيدة. هذه الأناشيد تُغنى في المناسبات الوطنية 
+                        والعيد الوطني وعيد التأسيس، وتكرم القيادة وتُعبر عن الفخر بالانتماء لهذا الوطن العظيم. 
+                        النشيد الوطني السعودي "سارعي للمجد والعلياء" يعبر عن هوية المملكة ونهضتها المستمرة تحت قيادة خادم الحرمين الشريفين 
+                        وولي عهده الأمين.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Heritage Detail Modal -->
+    <div class="heritage-detail-modal" id="heritageDetailModal">
+        <button class="heritage-detail-close" onclick="closeHeritageDetail()">
+            <i class="fas fa-times"></i>
+            <span>إغلاق</span>
+        </button>
+        
+        <div class="heritage-detail-container">
+            <div class="heritage-detail-left">
+                <div class="heritage-detail-image-wrapper">
+                    <img class="heritage-detail-image" src="" alt="">
+                </div>
+                <div class="heritage-detail-nav">
+                    <button class="heritage-detail-nav-btn heritage-detail-prev" onclick="navigateHeritageDetail(-1)">
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button class="heritage-detail-nav-btn heritage-detail-next" onclick="navigateHeritageDetail(1)">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="heritage-detail-right">
+                <h2 class="heritage-detail-title"></h2>
+                <p class="heritage-detail-description"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Entertainment Loading Screen -->
+    <div class="heritage-loading" id="entertainmentLoading">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <div class="loading-spinner">
+                    <div class="spinner-ring"></div>
+                    <div class="spinner-ring"></div>
+                    <div class="spinner-ring"></div>
+                </div>
+            </div>
+            <div class="loading-text">جاري التحميل...</div>
+            <div class="loading-bar">
+                <div class="loading-bar-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Entertainment Heritage Page -->
+    <div class="entertainment-page" id="entertainmentPage">
+        <!-- Mars Effect -->
+        <div class="wind-effect" id="windEffect">
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+            <div class="wind-particle"></div>
+        </div>
+        
+        <button class="heritage-close" onclick="closeEntertainmentPage()">
+            <i class="fas fa-times"></i>
+        </button>
+        
+        <!-- Main Entertainment Content -->
+        <div class="entertainment-hero" id="entertainmentHero">
+            <!-- Decorative Top Line -->
+            <div class="entertainment-top-line">
+                <div class="entertainment-compass-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+            
+            <!-- Central Planet and Text -->
+            <div class="entertainment-planet-container">
+                <div class="entertainment-planet-wrapper">
+                    <div class="entertainment-planet">
+                        <div class="entertainment-planet-shine"></div>
+                        <h1 class="entertainment-main-text">تراثنا</h1>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bottom Navigation -->
+            <div class="entertainment-bottom-nav">
+                <div class="entertainment-nav-left">
+                    <span class="entertainment-nav-circle"></span>
+                    <span class="entertainment-nav-text">التراث السعودي</span>
+                </div>
+                <button class="entertainment-start-btn" onclick="startHeritageChallenge()">
+                    ابدأ التحدي
+                </button>
+                <div class="entertainment-nav-right">
+                    <span class="entertainment-nav-measure">2.150 كم²</span>
+                    <i class="fas fa-globe-americas"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Challenge Questions Section -->
+        <div class="challenge-section" id="challengeSection" style="display: none;">
+            <div class="challenge-container">
+                <!-- Question Display -->
+                <div class="question-container" id="questionContainer">
+                    <div class="question-header">
+                        <span class="question-number" id="questionNumber">السؤال 1 من 15</span>
+                        <span class="question-score" id="questionScore">النقاط: 0</span>
+                    </div>
+                    
+                    <div class="question-content">
+                        <div class="question-image">
+                            <img id="questionImage" src="" alt="Question Image">
+                        </div>
+                        <h2 class="question-text" id="questionText"></h2>
+                    </div>
+                    
+                    <div class="question-options" id="questionOptions">
+                        <!-- Options will be generated by JS -->
+                    </div>
+                    
+                    <button class="question-next-btn" id="nextQuestionBtn" onclick="nextQuestion()" style="display: none;">
+                        السؤال التالي
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                </div>
+                
+                <!-- Results Section -->
+                <div class="challenge-results" id="challengeResults" style="display: none;">
+                    <div class="results-content">
+                        <div class="results-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h2 class="results-title" id="resultsTitle">تهانينا!</h2>
+                        <p class="results-score" id="resultsScore">حصلت على 0 من 15</p>
+                        <p class="results-message" id="resultsMessage"></p>
+                        <div class="results-actions">
+                            <button class="results-btn" onclick="restartChallenge()">
+                                <i class="fas fa-redo"></i>
+                                اعادة التحدي
+                            </button>
+                            <button class="results-btn" onclick="closeEntertainmentPage()">
+                                <i class="fas fa-home"></i>
+                                العودة للرئيسية
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Loading Screen -->
+    <div class="heritage-loading" id="contactLoading">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <div class="loading-spinner">
+                    <div class="spinner-ring"></div>
+                    <div class="spinner-ring"></div>
+                    <div class="spinner-ring"></div>
+                </div>
+            </div>
+            <div class="loading-text">جاري التحميل...</div>
+            <div class="loading-bar">
+                <div class="loading-bar-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Page -->
+    <div class="contact-page" id="contactPage">
+        <button class="heritage-close" onclick="closeContactPage()">
+            <i class="fas fa-times"></i>
+        </button>
+        
+        <div class="contact-header">
+            <div class="contact-title-section">
+                <h1 class="contact-main-title">التواصل معنا</h1>
+                <p class="contact-subtitle">نحن هنا للإجابة على استفساراتك</p>
+            </div>
+        </div>
+
+        <div class="contact-content">
+            <div class="contact-info">
+                <h2 class="contact-section-title">وسائل التواصل الاجتماعي</h2>
+                <div class="contact-line"></div>
+            </div>
+
+            <div class="contact-social">
+                <div onclick="window.open('https://youtube.com/@asalahsa?si=R-DdL1mMWBuYf04t', '_blank')" class="contact-card youtube-card">
+                    <i class="fa-brands fa-youtube"></i>
+                </div>
+                <div onclick="window.open('https://www.instagram.com/asalah_ksa', '_blank')" class="contact-card instagram-card">
+                    <i class="fa-brands fa-instagram"></i>
+                </div>
+                <div onclick="window.open('https://www.tiktok.com/@asalah_sa?_t=ZS-90xeYDJH0xs&_r=1', '_blank')" class="contact-card tiktok-card">
+                    <i class="fa-brands fa-tiktok"></i>
+                </div>
+                <div onclick="window.open('https://www.facebook.com/profile.php?id=61583101600687', '_blank')" class="contact-card facebook-card">
+                    <i class="fa-brands fa-facebook"></i>
+                </div>
+            </div>
+
+            <div class="contact-info developers">
+                <h2 class="contact-section-title">فريق العمل</h2>
+                <div class="contact-line"></div>
+            </div>
+
+            <div class="developers-info-box">
+                <div class="developers-logos">
+                    <div class="developers-logo">
+                        <img src="imgs\ChatGPT Image Sep 21, 2025, 04_35_58 PM.png" alt="School Logo" id="schoolLogo">
+                    </div>
+                    <div class="developers-logo">
+                        <img src="logo.png" alt="logo.png" id="secondLogo">
+                    </div>
+                </div>
+                <div class="developers-content">
+                    <div class="developer-item">
+                        <i class="fas fa-code"></i>
+                        <span class="developer-label">المبرمج:</span>
+                        <span class="developer-name">نور ضياء صابر</span>
+                    </div>
+                    <div class="developer-item">
+                        <i class="fas fa-code"></i>
+                        <span class="developer-label">المبرمج:</span>
+                        <span class="developer-name">يحيى أشرف</span>
+                    </div>
+                    <div class="developer-item">
+                        <i class="fas fa-user-tie"></i>
+                        <span class="developer-label">المشرف:</span>
+                        <span class="developer-name">رياض ابو هويدي</span>
+                    </div>
+                    <div class="developer-item school">
+                        <i class="fas fa-school"></i>
+                        <span class="developer-label">المدرسة:</span>
+                        <span class="developer-name">مدارس دار الأحفاد</span>
+                    </div>
+                </div>
+                <div class="developers-thanks">
+                    <p class="thanks-text">
+                        نتقدم بخالص الشكر والتقدير لكل من ساهم في إنجاح هذا المشروع ودعم منصة <strong>أصــالة</strong> منذ انطلاقتها.
+                    </p>
+                    <p class="thanks-text">
+                        شكرًا لإدارة <strong>مدارس دار الأحفاد</strong> على دعمها المستمر وتشجيعها الدائم للإبداع والابتكار.
+                    </p>
+                    <p class="thanks-text">
+                        كما نوجه شكرًا خاصًا إلى المشرف على توجيهه القيّم وجهوده الكبيرة التي كان لها الأثر الواضح في تنفيذ هذا العمل.
+                    </p>
+                    <p class="thanks-text">
+                        ولا ننسى أن نعبّر عن فخرنا وامتناننا لـ <strong>الطلاب</strong> الذين أبدعوا في كل تفاصيل هذا المشروع، فأنتم الأساس الذي بُنيت عليه هذه المنصة، وبكم نعتز ونفخر.
+                    </p>
+                </div>
+            </div>
+
+            <div class="contact-info email">
+                <h2 class="contact-section-title">تواصل عبر البريد الإلكتروني</h2>
+                <div class="contact-line"></div>
+            </div>
+
+            <section class="contact-form-section">
+                <form id="contactForm" onsubmit="sendEmail(event)">
+                    <input type="text" id="contactName" placeholder="الاسم الكامل" required>
+                    <input type="email" id="contactEmail" placeholder="البريد الإلكتروني" required>
+                    <textarea id="contactMessage" rows="5" placeholder="اكتب رسالتك أو مشكلتك هنا..." required></textarea>
+                    <button type="submit">إرسال</button>
+                </form>
+            </section>
+        </div>
+    </div>
+
+    <!-- Auth Modal (Login/Register) -->
+    <div class="auth-modal-overlay" id="authModal" style="display: none;">
+        <div class="auth-modal-container">
+            <button class="auth-modal-close" onclick="closeAuthModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <!-- User Profile (shown when logged in) -->
+            <div class="auth-form-wrapper" id="userProfile" style="display: none;">
+                <div class="auth-header">
+                    <div class="profile-avatar" id="profileAvatar"></div>
+                    <h2 class="auth-title" id="profileUsername">المستخدم</h2>
+                    <p class="auth-subtitle">ملفك الشخصي</p>
+                </div>
+                <div class="profile-info">
+                    <div class="profile-info-item">
+                        <span class="profile-label">اسم المستخدم:</span>
+                        <span class="profile-value" id="profileUsernameValue">-</span>
+                    </div>
+                    <div class="profile-info-item">
+                        <span class="profile-label">تاريخ الإنشاء:</span>
+                        <span class="profile-value" id="profileCreatedDate">-</span>
+                    </div>
+                </div>
+                <button class="auth-btn logout-btn" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    تسجيل الخروج
+                </button>
+            </div>
+            
+            <!-- Login Form -->
+            <div class="auth-form-wrapper" id="loginForm">
+                <div class="auth-header">
+                    <h2 class="auth-title">تسجيل الدخول</h2>
+                    <p class="auth-subtitle">مرحباً بعودتك</p>
+                </div>
+                <div class="success-message" id="loginSuccessMessage"></div>
+                <form class="auth-form" id="loginFormElement" onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label for="loginUsername">
+                            <i class="fas fa-user"></i>
+                            اسم المستخدم
+                        </label>
+                        <div class="input-wrapper">
+                            <input type="text" id="loginUsername" name="username" required autocomplete="username" placeholder="أدخل اسم المستخدم">
+                            <i class="fas fa-check-circle input-success-icon" style="display: none;"></i>
+                        </div>
+                        <span class="error-message" id="loginUsernameError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">
+                            <i class="fas fa-lock"></i>
+                            كلمة المرور
+                        </label>
+                        <div class="input-wrapper password-wrapper">
+                            <input type="password" id="loginPassword" name="password" required autocomplete="current-password" placeholder="أدخل كلمة المرور">
+                            <button type="button" class="toggle-password" onclick="togglePasswordVisibility('loginPassword')">
+                                <i class="fas fa-eye" id="loginPasswordEye"></i>
+                            </button>
+                        </div>
+                        <span class="error-message" id="loginPasswordError"></span>
+                    </div>
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="rememberMe">
+                            <span class="checkbox-custom"></span>
+                            <span class="checkbox-text">تذكرني</span>
+                        </label>
+                    </div>
+                    <button type="submit" class="auth-btn" id="loginBtn">
+                        <span class="btn-text">تسجيل الدخول</span>
+                        <span class="btn-loader" style="display: none;">
+                            <i class="fas fa-spinner fa-spin"></i>
+                        </span>
+                    </button>
+                </form>
+                <div class="auth-footer">
+                    <p>ليس لديك حساب؟ <a href="#" onclick="switchToRegister(); return false;">إنشاء حساب جديد</a></p>
+                </div>
+            </div>
+
+            <!-- Register Form -->
+            <div class="auth-form-wrapper" id="registerForm" style="display: none;">
+                <div class="auth-header">
+                    <h2 class="auth-title">إنشاء حساب جديد</h2>
+                    <p class="auth-subtitle">انضم إلى أصالة</p>
+                </div>
+                <div class="success-message" id="registerSuccessMessage"></div>
+                <form class="auth-form" id="registerFormElement" onsubmit="handleRegister(event)">
+                    <div class="form-group">
+                        <label for="registerUsername">
+                            <i class="fas fa-user"></i>
+                            اسم المستخدم
+                        </label>
+                        <div class="input-wrapper">
+                            <input type="text" id="registerUsername" name="username" required autocomplete="username" placeholder="أدخل اسم المستخدم (3 أحرف على الأقل)" oninput="validateUsernameRealTime()" onblur="validateUsernameRealTime()">
+                            <i class="fas fa-check-circle input-success-icon" id="registerUsernameSuccessIcon" style="display: none;"></i>
+                            <i class="fas fa-times-circle input-error-icon" id="registerUsernameErrorIcon" style="display: none;"></i>
+                        </div>
+                        <span class="error-message" id="registerUsernameError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">
+                            <i class="fas fa-lock"></i>
+                            كلمة المرور
+                        </label>
+                        <div class="input-wrapper password-wrapper">
+                            <input type="password" id="registerPassword" name="password" required autocomplete="new-password" placeholder="أدخل كلمة المرور (4 أحرف على الأقل)" oninput="checkPasswordStrength()">
+                            <button type="button" class="toggle-password" onclick="togglePasswordVisibility('registerPassword')">
+                                <i class="fas fa-eye" id="registerPasswordEye"></i>
+                            </button>
+                        </div>
+                        <div class="password-strength" id="passwordStrength" style="display: none;">
+                            <div class="strength-bar">
+                                <div class="strength-fill" id="strengthFill"></div>
+                            </div>
+                            <span class="strength-text" id="strengthText"></span>
+                        </div>
+                        <span class="error-message" id="registerPasswordError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">
+                            <i class="fas fa-lock"></i>
+                            تأكيد كلمة المرور
+                        </label>
+                        <div class="input-wrapper password-wrapper">
+                            <input type="password" id="confirmPassword" name="confirmPassword" required autocomplete="new-password" placeholder="أعد إدخال كلمة المرور" oninput="checkPasswordMatch()">
+                            <button type="button" class="toggle-password" onclick="togglePasswordVisibility('confirmPassword')">
+                                <i class="fas fa-eye" id="confirmPasswordEye"></i>
+                            </button>
+                            <i class="fas fa-check-circle input-success-icon" id="confirmPasswordSuccessIcon" style="display: none;"></i>
+                        </div>
+                        <span class="error-message" id="confirmPasswordError"></span>
+                    </div>
+                    <button type="submit" class="auth-btn" id="registerBtn">
+                        <span class="btn-text">إنشاء الحساب</span>
+                        <span class="btn-loader" style="display: none;">
+                            <i class="fas fa-spinner fa-spin"></i>
+                        </span>
+                    </button>
+                </form>
+                <div class="auth-footer">
+                    <p>لديك حساب بالفعل؟ <a href="#" onclick="switchToLogin(); return false;">تسجيل الدخول</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Background Image -->
+    <div class="background-image">
+        <img src="imgs/bg.jpg" alt="Saudi Heritage">
+        <div class="overlay"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

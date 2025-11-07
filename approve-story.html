@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الموافقة على القصة - أصالـة</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;700;900&family=Changa:wght@400;600;700&family=El+Messiri:wght@400;600;700&family=Lateef:wght@300;400;600&family=Reem+Kufi:wght@400;600;700&family=Scheherazade+New:wght@400;600;700&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-heritage: "Lateef", serif;
+            --font-heading: "El Messiri", serif;
+            --font-body: "Tajawal", sans-serif;
+            --font-classic: "Amiri", serif;
+        }
+        body {
+            background: linear-gradient(180deg, #0a0a0a 0%, #1a1a0a 50%, #0a0a0a 100%);
+            color: #fff;
+            font-family: var(--font-body);
+            padding: 40px 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .approval-container {
+            max-width: 800px;
+            width: 100%;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(196, 154, 100, 0.05));
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .approval-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+        
+        .approval-title {
+            font-family: var(--font-heading);
+            font-size: 36px;
+            font-weight: 700;
+            color: #ffd700;
+            margin-bottom: 20px;
+        }
+        
+        .story-preview {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: right;
+        }
+        
+        .story-preview h3 {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            color: #ffd700;
+            margin-bottom: 15px;
+        }
+        
+        .story-preview p {
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 10px;
+        }
+        
+        .approval-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        
+        .approval-btn {
+            padding: 18px 40px;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .approval-btn.approve {
+            background: linear-gradient(135deg, #4caf50, #45a049);
+            color: #fff;
+        }
+        
+        .approval-btn.reject {
+            background: linear-gradient(135deg, #f44336, #d32f2f);
+            color: #fff;
+        }
+        
+        .approval-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .status-message {
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 30px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .status-message.success {
+            background: rgba(76, 175, 80, 0.2);
+            border: 2px solid #4caf50;
+            color: #4caf50;
+        }
+        
+        .status-message.error {
+            background: rgba(244, 67, 54, 0.2);
+            border: 2px solid #f44336;
+            color: #f44336;
+        }
+    </style>
+</head>
+<body>
+    <div class="approval-container" id="approvalContainer">
+        <div class="approval-icon">📖</div>
+        <h1 class="approval-title">مراجعة القصة</h1>
+        <div id="storyPreview"></div>
+        <div class="approval-buttons" id="approvalButtons">
+            <button class="approval-btn approve" onclick="handleApproval('approve')">
+                ✅ الموافقة
+            </button>
+            <button class="approval-btn reject" onclick="handleApproval('reject')">
+                ❌ رفض
+            </button>
+        </div>
+        <div id="statusMessage"></div>
+    </div>
+
+    <script>
+        // الحصول على معاملات URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const storyId = urlParams.get('id');
+        const action = urlParams.get('action');
+        const dataParam = urlParams.get('data');
+
+        // تحميل القصة من localStorage أو من URL
+        function getPendingStories() {
+            const stored = localStorage.getItem('pendingStories');
+            return stored ? JSON.parse(stored) : [];
+        }
+        
+        // الحصول على بيانات القصة من URL (إذا كانت موجودة)
+        function getStoryFromUrl() {
+            if (dataParam) {
+                try {
+                    const decoded = atob(decodeURIComponent(dataParam));
+                    return JSON.parse(decoded);
+                } catch (e) {
+                    console.error('خطأ في فك التشفير:', e);
+                    return null;
+                }
+            }
+            return null;
+        }
+
+        function getApprovedStories() {
+            const stored = localStorage.getItem('approvedStories');
+            return stored ? JSON.parse(stored) : [];
+        }
+
+        function saveApprovedStory(story) {
+            const approvedStories = getApprovedStories();
+            approvedStories.push({
+                author: story.name,
+                title: story.storyTitle,
+                story: story.story,
+                date: story.date
+            });
+            localStorage.setItem('approvedStories', JSON.stringify(approvedStories));
+        }
+
+        // عرض معاينة القصة
+        function displayStoryPreview() {
+            let story = null;
+            
+            // محاولة الحصول على القصة من URL أولاً
+            const storyFromUrl = getStoryFromUrl();
+            if (storyFromUrl) {
+                story = {
+                    ...storyFromUrl,
+                    id: storyId || Date.now().toString(),
+                    date: storyFromUrl.date || new Date().toISOString().split('T')[0]
+                };
+            } else if (storyId) {
+                // إذا لم تكن موجودة في URL، ابحث في localStorage
+                const pendingStories = getPendingStories();
+                story = pendingStories.find(s => s.id === storyId);
+            }
+
+            if (!story) {
+                document.getElementById('approvalContainer').innerHTML = `
+                    <div class="approval-icon">❌</div>
+                    <h1 class="approval-title">القصة غير موجودة</h1>
+                    <p style="color: #f44336; font-size: 18px; margin: 20px 0;">
+                        ${!storyId ? 'معرف القصة غير موجود في الرابط!' : 
+                          'القصة قد تكون تمت مراجعتها مسبقاً أو تم حذفها.'}
+                    </p>
+                    <p style="color: #999; font-size: 14px;">
+                        تأكد من أنك فتحت الرابط الصحيح من البريد الإلكتروني.
+                    </p>
+                `;
+                return;
+            }
+
+            // حفظ القصة في localStorage إذا كانت من URL
+            if (storyFromUrl && storyId) {
+                const pendingStories = getPendingStories();
+                const existingIndex = pendingStories.findIndex(s => s.id === storyId);
+                if (existingIndex === -1) {
+                    pendingStories.push(story);
+                    localStorage.setItem('pendingStories', JSON.stringify(pendingStories));
+                }
+            }
+
+            document.getElementById('storyPreview').innerHTML = `
+                <div class="story-preview">
+                    <h3>${story.storyTitle}</h3>
+                    <p><strong>الاسم:</strong> ${story.name}</p>
+                    <p><strong>البريد الإلكتروني:</strong> ${story.email}</p>
+                    <p><strong>التاريخ:</strong> ${story.date}</p>
+                    <hr style="border: 1px solid rgba(255,215,0,0.2); margin: 20px 0;">
+                    <p><strong>القصة:</strong></p>
+                    <p style="text-align: justify; line-height: 2; white-space: pre-wrap;">${story.story}</p>
+                    ${story.imageFile ? `<p style="margin-top: 15px;"><strong>🖼️ صورة:</strong> ${story.imageFile}</p>` : ''}
+                    ${story.audioFile ? `<p><strong>🎙️ تسجيل صوتي:</strong> ${story.audioFile}</p>` : ''}
+                </div>
+            `;
+
+            // إذا كان هناك action مباشر في URL، تنفيذ الموافقة/الرفض تلقائياً
+            if (action === 'approve') {
+                setTimeout(() => {
+                    handleApproval('approve');
+                }, 500);
+            } else if (action === 'reject') {
+                setTimeout(() => {
+                    handleApproval('reject');
+                }, 500);
+            }
+        }
+
+        // معالجة الموافقة/الرفض
+        function handleApproval(actionType) {
+            let story = null;
+            
+            // محاولة الحصول على القصة من URL أولاً
+            const storyFromUrl = getStoryFromUrl();
+            if (storyFromUrl) {
+                story = {
+                    ...storyFromUrl,
+                    id: storyId || Date.now().toString(),
+                    date: storyFromUrl.date || new Date().toISOString().split('T')[0]
+                };
+            } else if (storyId) {
+                // إذا لم تكن موجودة في URL، ابحث في localStorage
+                const pendingStories = getPendingStories();
+                const storyIndex = pendingStories.findIndex(s => s.id === storyId);
+                if (storyIndex !== -1) {
+                    story = pendingStories[storyIndex];
+                }
+            }
+
+            if (!story) {
+                showStatus('error', 'القصة غير موجودة! قد تكون تمت مراجعتها مسبقاً أو الرابط غير صحيح.');
+                return;
+            }
+
+            if (actionType === 'approve') {
+                // حفظ القصة كمعتمدة
+                saveApprovedStory(story);
+                
+                // حذف من المعلقة (إذا كانت موجودة)
+                if (storyId) {
+                    const pendingStories = getPendingStories();
+                    const storyIndex = pendingStories.findIndex(s => s.id === storyId);
+                    if (storyIndex !== -1) {
+                        pendingStories.splice(storyIndex, 1);
+                        localStorage.setItem('pendingStories', JSON.stringify(pendingStories));
+                    }
+                }
+                
+                showStatus('success', '✅ تمت الموافقة على القصة بنجاح! تمت إضافتها إلى الموقع.');
+                
+                // إخفاء الأزرار
+                const buttonsDiv = document.getElementById('approvalButtons');
+                if (buttonsDiv) {
+                    buttonsDiv.style.display = 'none';
+                }
+                
+                // إعادة تحميل القصص في الموقع الرئيسي إذا كان مفتوحاً
+                if (window.opener && typeof window.opener.updateSubmittedStoriesDisplay === 'function') {
+                    window.opener.updateSubmittedStoriesDisplay();
+                }
+                
+            } else if (actionType === 'reject') {
+                // حذف من المعلقة (إذا كانت موجودة)
+                if (storyId) {
+                    const pendingStories = getPendingStories();
+                    const storyIndex = pendingStories.findIndex(s => s.id === storyId);
+                    if (storyIndex !== -1) {
+                        pendingStories.splice(storyIndex, 1);
+                        localStorage.setItem('pendingStories', JSON.stringify(pendingStories));
+                    }
+                }
+                
+                showStatus('error', '❌ تم رفض القصة وحذفها.');
+                
+                // إخفاء الأزرار
+                const buttonsDiv = document.getElementById('approvalButtons');
+                if (buttonsDiv) {
+                    buttonsDiv.style.display = 'none';
+                }
+            }
+        }
+
+        function showStatus(type, message) {
+            const statusDiv = document.getElementById('statusMessage');
+            statusDiv.className = `status-message ${type}`;
+            statusDiv.textContent = message;
+        }
+
+        // تحميل القصة عند تحميل الصفحة
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', displayStoryPreview);
+        } else {
+            // الصفحة محملة بالفعل
+            displayStoryPreview();
+        }
+    </script>
+</body>
+</html>
+
